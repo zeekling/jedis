@@ -241,6 +241,17 @@ public interface StreamCommands {
       long minIdleTime, StreamEntryID start, XAutoClaimParams params);
 
   /**
+   *
+   * @param key
+   * @param group
+   * @param consumerName
+   * @param minIdleTime
+   * @param params
+   * @return
+   */
+  List<StreamEntryID> xclaimLastId(String key, String group, String consumerName, long minIdleTime, XClaimParams params);
+
+  /**
    * Introspection command used in order to retrieve different information about the stream
    * @param key Stream name
    * @return {@link StreamInfo} that contains information about the stream

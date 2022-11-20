@@ -2492,6 +2492,12 @@ public class CommandObjects {
         .add(JUSTID), BuilderFactory.STREAM_ENTRY_ID_LIST);
   }
 
+  public final CommandObject<List<StreamEntryID>> xclaimLastId(String key,
+      String group, String consumerName, long minIdleTime, XClaimParams params) {
+    return new CommandObject<>(commandArguments(XCLAIM).key(key).add(group)
+            .add(consumerName).add(minIdleTime).add(params), BuilderFactory.STREAM_ENTRY_ID_LIST);
+  }
+
   public final CommandObject<Map.Entry<StreamEntryID, List<StreamEntry>>> xautoclaim(String key,
       String group, String consumerName, long minIdleTime, StreamEntryID start,
       XAutoClaimParams params) {

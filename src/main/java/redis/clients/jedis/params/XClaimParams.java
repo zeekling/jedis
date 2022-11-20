@@ -14,6 +14,8 @@ public class XClaimParams implements IParams {
   private Integer retryCount;
   private boolean force;
 
+  private String lastId;
+
   public XClaimParams() {
   }
 
@@ -58,6 +60,18 @@ public class XClaimParams implements IParams {
    */
   public XClaimParams force() {
     this.force = true;
+    return this;
+  }
+
+  /**
+   * Update the consumer group last ID with the specified ID if the current last ID is smaller than the provided one.
+   * This is used for replication / AOF, so that when we read from a consumer group, the XCLAIM that gets propagated to give ownership
+   * to the consumer, is also used in order to update the group current ID.
+   * @param lastId last ID
+   * @return XClaimParams
+   */
+  public XClaimParams lastId(String lastId) {
+    this.lastId = lastId;
     return this;
   }
 

@@ -9369,6 +9369,12 @@ public class Jedis implements ServerCommands, DatabaseCommands, JedisCommands, J
   }
 
   @Override
+  public List<StreamEntryID> xclaimLastId(String key, String group, String consumerName, long minIdleTime, XClaimParams params) {
+    checkIsInMultiOrPipeline();
+    return connection.executeCommand(commandObjects.xclaimLastId(key, group, consumerName, minIdleTime, params));
+  }
+
+  @Override
   public Map.Entry<StreamEntryID, List<StreamEntry>> xautoclaim(String key, String group, String consumerName,
       long minIdleTime, StreamEntryID start, XAutoClaimParams params) {
     checkIsInMultiOrPipeline();

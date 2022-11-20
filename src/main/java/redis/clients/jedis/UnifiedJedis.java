@@ -2834,6 +2834,11 @@ public class UnifiedJedis implements JedisCommands, JedisBinaryCommands,
   }
 
   @Override
+  public List<StreamEntryID> xclaimLastId(String key, String group, String consumerName, long minIdleTime, XClaimParams params) {
+    return executeCommand(commandObjects.xclaimLastId(key, group, consumerName, minIdleTime, params));
+  }
+
+  @Override
   public Map.Entry<StreamEntryID, List<StreamEntry>> xautoclaim(String key, String group, String consumerName, long minIdleTime, StreamEntryID start, XAutoClaimParams params) {
     return executeCommand(commandObjects.xautoclaim(key, group, consumerName, minIdleTime, start, params));
   }
